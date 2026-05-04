@@ -1,1 +1,707 @@
+:root {
+  /* Warna utama */
+  --cream:        #f2ead8;      /* kertas tua */
+  --cream-dark:   #e8ddc8;      /* sedikit lebih gelap */
+  --beige:        #d6c9a8;      /* beige hangat */
+  --brown:        #5c3d1e;      /* coklat tua pekat */
+  --brown-mid:    #8b5e3c;      /* coklat menengah */
+  --brown-light:  #c8956c;      /* coklat muda / aksen */
+  --green-dark:   #2a3d1f;      /* hijau tua pekat */
+  --green-mid:    #3e5c2b;      /* hijau tengah */
+  --ink:          #1a1208;      /* warna tinta / teks gelap */
+  --ink-mid:      #4a3728;      /* teks paragraf */
+  --gold:         #b8912a;      /* aksen emas */
+  --gold-light:   #d4ab4a;
 
+  /* Tipografi */
+  --font-display: 'Playfair Display SC', Georgia, serif;
+  --font-body:    'EB Garamond', 'Times New Roman', serif;
+  --font-label:   'Cinzel', Georgia, serif;
+
+  /* Lainnya */
+  --shadow-sm:  0 2px 12px rgba(44, 24, 8, 0.10);
+  --shadow-md:  0 6px 28px rgba(44, 24, 8, 0.16);
+  --shadow-lg:  0 16px 56px rgba(44, 24, 8, 0.22);
+  --radius:     4px;
+  --radius-lg:  8px;
+  --transition: 0.38s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* ──────────────────────────────────────────────────────────
+   RESET & BASE
+────────────────────────────────────────────────────────── */
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+html { scroll-behavior: smooth; font-size: 16px; }
+
+body {
+  font-family: var(--font-body);
+  background-color: var(--cream);
+  color: var(--ink-mid);
+  line-height: 1.8;
+  overflow-x: hidden;
+  /* Tekstur background: repeating noise halus via SVG inline */
+  background-image:
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='0.045'/%3E%3C/svg%3E");
+  background-repeat: repeat;
+  background-size: 300px 300px;
+}
+
+a { text-decoration: none; color: inherit; }
+ul { list-style: none; }
+img { display: block; max-width: 100%; height: auto; }
+
+/* ──────────────────────────────────────────────────────────
+   GRAIN OVERLAY — lapisan noise di atas seluruh halaman
+────────────────────────────────────────────────────────── */
+.grain-overlay {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 9999;
+  opacity: 0.035;
+  background-image:
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='g'%3E%3CfeTurbulence type='turbulence' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23g)' opacity='1'/%3E%3C/svg%3E");
+  background-size: 200px 200px;
+  mix-blend-mode: multiply;
+}
+
+/* ──────────────────────────────────────────────────────────
+   CONTAINER
+────────────────────────────────────────────────────────── */
+.container {
+  max-width: 1080px;
+  margin: 0 auto;
+  padding: 0 28px;
+}
+
+/* ──────────────────────────────────────────────────────────
+   NAVBAR
+────────────────────────────────────────────────────────── */
+.navbar {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%;
+  z-index: 900;
+  transition: background var(--transition), box-shadow var(--transition),
+              border-bottom var(--transition);
+}
+
+.nav-inner {
+  max-width: 1080px;
+  margin: 0 auto;
+  padding: 22px 28px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+/* Logo */
+.nav-logo {
+  font-family: var(--font-label);
+  font-size: 1.05rem;
+  letter-spacing: 2.5px;
+  color: var(--cream);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  transition: color var(--transition);
+}
+.logo-icon { color: var(--gold-light); font-size: 0.8rem; }
+
+/* Links */
+.nav-links {
+  display: flex;
+  gap: 36px;
+}
+.nav-links a {
+  font-family: var(--font-label);
+  font-size: 0.78rem;
+  letter-spacing: 2px;
+  color: rgba(242, 234, 216, 0.85);
+  text-transform: uppercase;
+  position: relative;
+  padding-bottom: 3px;
+  transition: color var(--transition);
+}
+.nav-links a::after {
+  content: '';
+  position: absolute;
+  bottom: 0; left: 0;
+  width: 0; height: 1px;
+  background: var(--gold-light);
+  transition: width var(--transition);
+}
+.nav-links a:hover { color: var(--gold-light); }
+.nav-links a:hover::after { width: 100%; }
+
+/* Navbar scrolled */
+.navbar.scrolled {
+  background: var(--brown);
+  box-shadow: var(--shadow-md);
+  border-bottom: 1px solid var(--brown-mid);
+}
+.navbar.scrolled .nav-logo { color: var(--cream); }
+
+/* Hamburger */
+.hamburger {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 4px;
+}
+.hamburger span {
+  display: block;
+  width: 22px; height: 1.5px;
+  background: var(--cream);
+  transition: var(--transition);
+}
+.hamburger.active span:nth-child(1) { transform: translateY(6.5px) rotate(45deg); }
+.hamburger.active span:nth-child(2) { opacity: 0; }
+.hamburger.active span:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
+
+/* ──────────────────────────────────────────────────────────
+   HERO SECTION
+────────────────────────────────────────────────────────── */
+.hero {
+  position: relative;
+  height: 100vh;
+  min-height: 620px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  text-align: center;
+}
+
+/* Gambar background */
+.hero-bg {
+  position: absolute;
+  inset: 0;
+  width: 100%; height: 100%;
+  object-fit: cover;
+  object-position: center 40%;
+  transform: scale(1.08); /* diperbesar agar ada ruang parallax */
+  will-change: transform;
+}
+
+/* Overlay berlapis: gradient coklat + hijau gelap */
+.hero-overlay {
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(
+      160deg,
+      rgba(26, 18, 8, 0.72) 0%,
+      rgba(42, 61, 31, 0.60) 60%,
+      rgba(26, 18, 8, 0.78) 100%
+    );
+}
+
+/* Bingkai dekoratif pojok */
+.hero-frame { position: absolute; inset: 28px; pointer-events: none; }
+.corner {
+  position: absolute;
+  width: 40px; height: 40px;
+  border-color: rgba(212, 171, 74, 0.55);
+  border-style: solid;
+}
+.corner.tl { top: 0; left: 0;  border-width: 1.5px 0 0 1.5px; }
+.corner.tr { top: 0; right: 0; border-width: 1.5px 1.5px 0 0; }
+.corner.bl { bottom: 0; left: 0;  border-width: 0 0 1.5px 1.5px; }
+.corner.br { bottom: 0; right: 0; border-width: 0 1.5px 1.5px 0; }
+
+/* Konten hero */
+.hero-content {
+  position: relative;
+  z-index: 2;
+  color: var(--cream);
+  padding: 0 24px;
+  animation: heroFadeUp 1.2s cubic-bezier(0.4, 0, 0.2, 1) both;
+}
+
+.hero-eyebrow {
+  font-family: var(--font-label);
+  font-size: 0.72rem;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  color: var(--gold-light);
+  margin-bottom: 18px;
+}
+
+/* Ornamen garis dengan simbol */
+.ornament-line {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  margin: 14px 0;
+  color: var(--gold);
+  font-size: 1.2rem;
+}
+.ornament-line::before,
+.ornament-line::after {
+  content: '';
+  flex: 1;
+  max-width: 120px;
+  height: 1px;
+  background: linear-gradient(to right, transparent, var(--gold));
+}
+.ornament-line::after {
+  background: linear-gradient(to left, transparent, var(--gold));
+}
+
+.hero-title {
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 5.5vw, 4rem);
+  font-weight: 700;
+  line-height: 1.15;
+  letter-spacing: 1px;
+  color: var(--cream);
+  text-shadow: 0 3px 24px rgba(0,0,0,0.45);
+  margin: 8px 0;
+}
+.hero-title em {
+  font-style: italic;
+  color: var(--gold-light);
+}
+
+.hero-subtitle {
+  font-family: var(--font-body);
+  font-size: clamp(1rem, 2vw, 1.15rem);
+  font-style: italic;
+  color: rgba(242, 234, 216, 0.82);
+  margin: 16px 0 28px;
+  line-height: 1.7;
+}
+
+/* Tombol Jelajahi */
+.btn-explore {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 8px;
+  padding: 14px 36px;
+  border: 1px solid var(--gold);
+  color: var(--cream);
+  font-family: var(--font-label);
+  font-size: 0.78rem;
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+  background: rgba(184, 145, 42, 0.15);
+  backdrop-filter: blur(4px);
+  border-radius: 2px;
+  transition: background var(--transition), transform var(--transition),
+              box-shadow var(--transition);
+}
+.btn-explore:hover {
+  background: var(--gold);
+  color: var(--brown);
+  transform: translateY(-3px);
+  box-shadow: 0 8px 28px rgba(184,145,42,0.35);
+}
+.btn-arrow {
+  width: 18px; height: 18px;
+  animation: bounce 1.8s ease-in-out infinite;
+}
+
+/* ──────────────────────────────────────────────────────────
+   SECTION UMUM
+────────────────────────────────────────────────────────── */
+.section {
+  padding: 96px 0;
+  background: var(--cream);
+}
+.section-alt {
+  background: var(--cream-dark);
+}
+
+/* Kepala section */
+.section-head {
+  text-align: center;
+  margin-bottom: 56px;
+}
+.section-label {
+  font-family: var(--font-label);
+  font-size: 0.72rem;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 12px;
+}
+.section-title {
+  font-family: var(--font-display);
+  font-size: clamp(1.8rem, 4vw, 2.8rem);
+  color: var(--brown);
+  letter-spacing: 1px;
+  margin-bottom: 20px;
+}
+.section-desc {
+  font-style: italic;
+  color: var(--ink-mid);
+  max-width: 560px;
+  margin: 0 auto;
+  font-size: 1.05rem;
+  margin-top: -28px;
+  margin-bottom: 40px;
+}
+
+/* Garis ornamen di bawah judul section */
+.divider-ornament {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+}
+.divider-ornament .line {
+  width: 80px; height: 1px;
+  background: var(--beige);
+}
+.divider-ornament .diamond {
+  font-size: 0.55rem;
+  color: var(--gold);
+  letter-spacing: 2px;
+}
+
+/* ──────────────────────────────────────────────────────────
+   PEMISAH ANTAR SECTION
+────────────────────────────────────────────────────────── */
+.section-divider {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 18px;
+  padding: 10px 28px;
+  background: var(--cream);
+}
+.div-line {
+  flex: 1;
+  max-width: 340px;
+  height: 1px;
+  background: var(--beige);
+}
+.div-motif {
+  font-size: 0.5rem;
+  letter-spacing: 10px;
+  color: var(--gold);
+}
+
+/* ──────────────────────────────────────────────────────────
+   TWO-COLUMN LAYOUT (teks + gambar)
+────────────────────────────────────────────────────────── */
+.two-col {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 56px;
+  align-items: start;
+}
+/* Versi terbalik untuk Istana */
+.two-col--reverse { direction: rtl; }
+.two-col--reverse > * { direction: ltr; }
+
+/* Teks paragraf */
+.col-text p {
+  font-size: 1.08rem;
+  color: var(--ink-mid);
+  margin-bottom: 20px;
+  text-align: justify;
+  hyphens: auto;
+}
+.col-text p:first-child::first-letter {
+  /* Drop cap pada paragraf pertama */
+  float: left;
+  font-family: var(--font-display);
+  font-size: 3.8rem;
+  line-height: 0.8;
+  padding: 8px 10px 0 0;
+  color: var(--brown);
+}
+.col-text strong { color: var(--brown); font-weight: 600; }
+
+/* Kotak fakta bergaya koran lama */
+.fact-strip {
+  display: flex;
+  align-items: stretch;
+  gap: 0;
+  margin-top: 32px;
+  border: 1px solid var(--beige);
+  border-radius: var(--radius);
+  overflow: hidden;
+  background: rgba(255,255,255,0.35);
+}
+.fact {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 16px 12px;
+  text-align: center;
+}
+.fact-num {
+  font-family: var(--font-display);
+  font-size: 1.55rem;
+  color: var(--brown);
+  letter-spacing: 0.5px;
+  line-height: 1;
+}
+.fact-lbl {
+  font-family: var(--font-label);
+  font-size: 0.62rem;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-top: 5px;
+}
+.fact-sep {
+  align-self: stretch;
+  width: 1px;
+  background: var(--beige);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--beige);
+  font-size: 0.7rem;
+}
+
+/* Bingkai gambar bergaya vintage */
+.img-frame {
+  position: relative;
+  box-shadow: var(--shadow-lg);
+  border-radius: var(--radius);
+  overflow: hidden;
+  /* Bingkai dalam dengan border */
+  outline: 1px solid var(--beige);
+  outline-offset: -8px;
+}
+.img-frame img {
+  width: 100%;
+  height: 380px;
+  object-fit: cover;
+  filter: sepia(18%) contrast(1.05) brightness(0.97);
+  transition: transform 0.55s ease, filter 0.55s ease;
+}
+.img-frame:hover img {
+  transform: scale(1.04);
+  filter: sepia(0%) contrast(1.05) brightness(1);
+}
+
+/* Caption foto bergaya label vintage */
+.img-caption {
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  background: linear-gradient(transparent, rgba(26,18,8,0.72));
+  padding: 28px 16px 12px;
+}
+.img-caption span {
+  font-family: var(--font-label);
+  font-size: 0.68rem;
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+  color: rgba(242, 234, 216, 0.9);
+}
+
+/* ──────────────────────────────────────────────────────────
+   GALERI
+────────────────────────────────────────────────────────── */
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+
+.gallery-card {
+  background: var(--white);
+  border: 1px solid var(--beige);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  box-shadow: var(--shadow-sm);
+  transition: box-shadow var(--transition), transform var(--transition);
+  cursor: pointer;
+}
+.gallery-card:hover {
+  box-shadow: var(--shadow-md);
+  transform: translateY(-4px);
+}
+
+.gallery-img-wrap {
+  overflow: hidden;
+  aspect-ratio: 4 / 3;
+}
+.gallery-img-wrap img {
+  width: 100%; height: 100%;
+  object-fit: cover;
+  filter: sepia(20%) contrast(1.05);
+  transition: transform 0.55s ease, filter 0.45s ease;
+}
+.gallery-card:hover .gallery-img-wrap img {
+  transform: scale(1.08);
+  filter: sepia(0%) contrast(1.05);
+}
+
+.gallery-label {
+  font-family: var(--font-label);
+  font-size: 0.68rem;
+  letter-spacing: 1.8px;
+  text-transform: uppercase;
+  color: var(--gold);
+  text-align: center;
+  padding: 12px 14px;
+  border-top: 1px solid var(--beige);
+  background: rgba(255,255,255,0.6);
+}
+
+/* ──────────────────────────────────────────────────────────
+   VIDEO
+────────────────────────────────────────────────────────── */
+.video-wrapper {
+  position: relative;
+  padding-bottom: 56.25%; /* 16:9 */
+  height: 0;
+  overflow: hidden;
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-lg);
+  max-width: 860px;
+  margin: 0 auto;
+  /* Bingkai dalam */
+  outline: 1px solid var(--beige);
+  outline-offset: -6px;
+}
+.video-wrapper iframe {
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+}
+
+/* ──────────────────────────────────────────────────────────
+   FOOTER
+────────────────────────────────────────────────────────── */
+.footer {
+  background: var(--ink);
+  padding: 60px 0 32px;
+  text-align: center;
+  color: rgba(242, 234, 216, 0.65);
+}
+.footer-ornament {
+  font-size: 1.2rem;
+  color: var(--gold);
+  margin-bottom: 14px;
+  letter-spacing: 8px;
+}
+.footer-logo {
+  font-family: var(--font-display);
+  font-size: 1.4rem;
+  color: var(--cream);
+  letter-spacing: 2px;
+  margin-bottom: 8px;
+}
+.footer-tagline {
+  font-style: italic;
+  font-size: 0.95rem;
+  margin-bottom: 24px;
+}
+.footer-divider {
+  width: 80px; height: 1px;
+  background: rgba(184,145,42,0.4);
+  margin: 20px auto;
+}
+.footer-copy {
+  font-family: var(--font-label);
+  font-size: 0.66rem;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: rgba(242, 234, 216, 0.35);
+}
+
+/* ──────────────────────────────────────────────────────────
+   ANIMASI REVEAL (dikontrol via JS IntersectionObserver)
+────────────────────────────────────────────────────────── */
+.reveal {
+  opacity: 0;
+  transform: translateY(32px);
+  transition: opacity 0.75s ease, transform 0.75s ease;
+}
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ──────────────────────────────────────────────────────────
+   KEYFRAMES
+────────────────────────────────────────────────────────── */
+@keyframes heroFadeUp {
+  from { opacity: 0; transform: translateY(40px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes bounce {
+  0%, 100% { transform: translateY(0); }
+  50%       { transform: translateY(4px); }
+}
+
+/* ──────────────────────────────────────────────────────────
+   RESPONSIVE — TABLET (≤ 900px)
+────────────────────────────────────────────────────────── */
+@media (max-width: 900px) {
+  .two-col,
+  .two-col--reverse {
+    grid-template-columns: 1fr;
+    direction: ltr;
+  }
+  .two-col--reverse > * { direction: ltr; }
+
+  .img-frame img { height: 300px; }
+
+  .gallery-grid { grid-template-columns: repeat(2, 1fr); }
+
+  .hero-title { font-size: 2.2rem; }
+}
+
+/* ──────────────────────────────────────────────────────────
+   RESPONSIVE — MOBILE (≤ 600px)
+────────────────────────────────────────────────────────── */
+@media (max-width: 600px) {
+
+  /* Navbar mobile */
+  .nav-inner { padding: 18px 20px; }
+
+  .nav-links {
+    display: none;
+    position: absolute;
+    top: 100%; left: 0; right: 0;
+    flex-direction: column;
+    background: var(--brown);
+    padding: 24px 28px;
+    gap: 18px;
+    border-bottom: 1px solid var(--brown-mid);
+  }
+  .nav-links.open { display: flex; }
+
+  .hamburger { display: flex; }
+
+  /* Hero */
+  .hero-frame { inset: 14px; }
+  .hide-mobile { display: none; }
+
+  /* Sections */
+  .section { padding: 64px 0; }
+
+  /* Drop cap dimatikan di mobile agar tidak aneh */
+  .col-text p:first-child::first-letter {
+    float: none;
+    font-size: inherit;
+    padding: 0;
+    color: inherit;
+  }
+
+  /* Fakta strip vertikal */
+  .fact-strip { flex-direction: column; }
+  .fact-sep { display: none; }
+
+  /* Galeri 1 kolom */
+  .gallery-grid { grid-template-columns: 1fr; }
+
+  .img-frame img { height: 240px; }
+}

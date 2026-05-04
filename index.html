@@ -1,11 +1,455 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="id">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Peninggalan Belanda di Bogor</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Sejarah Kebun Raya & Istana Bogor</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display+SC:wght@400;700&family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Cinzel:wght@400;600&display=swap" rel="stylesheet"/>
+
+  <link rel="stylesheet" href="stylesheet.css"/>
 </head>
 <body>
-    
+    <div class="grain-overlay" aria-hidden="true"></div>
+
+    <nav class="navbar" id="navbar">
+        <div class="nav-inner">
+        <a href="#home" class="nav-logo">
+            <span class="logo-icon">✦</span>
+            <span>Bogor Heritage</span>
+        </a>
+
+        <ul class="nav-links" id="navLinks">
+            <li><a href="#home">Home</a></li>
+            <li><a href="#kebun-raya">Kebun Raya</a></li>
+            <li><a href="#istana">Istana</a></li>
+            <li><a href="#galeri">Galeri</a></li>
+        </ul>
+
+        <button class="hamburger" id="hamburger" aria-label="Buka menu">
+            <span></span><span></span><span></span>
+        </button>
+        </div>
+    </nav>
+
+
+    <header class="hero" id="home">
+      
+        <img
+        class="hero-bg"
+        id="heroBg"
+        src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/52/Kebun_Raya_Bogor_-_panoramio_%2830%29.jpg/1280px-Kebun_Raya_Bogor_-_panoramio_%2830%29.jpg"
+        alt="Kebun Raya Bogor">
+
+        <div class="hero-overlay"></div>
+        
+        <div class="hero-frame">
+        <span class="corner tl"></span>
+        <span class="corner tr"></span>
+        <span class="corner bl"></span>
+        <span class="corner br"></span>
+        </div>
+
+        <div class="hero-content">
+        <!-- Label tahun -->
+        <p class="hero-eyebrow">Est. 1817 · Bogor, Jawa Barat</p>
+        <!-- Garis ornamen atas -->
+        <div class="ornament-line"><span>❧</span></div>
+
+        <h1 class="hero-title">
+            Sejarah Kebun Raya<br/>
+            <em>&amp; Istana Bogor</em>
+        </h1>
+        <p class="hero-subtitle">
+            Menelusuri warisan dua ikon peradaban yang berdiri berdampingan<br class="hide-mobile"/>
+            di jantung Kota Hujan sejak era kolonial hingga kini.
+        </p>
+
+        <!-- Garis ornamen bawah -->
+        <div class="ornament-line"><span>❧</span></div>
+
+        <!-- Tombol scroll ke bawah -->
+        <a href="#kebun-raya" class="btn-explore">
+            Jelajahi Sejarah
+            <svg class="btn-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <polyline points="6 9 12 15 18 9"/>
+            </svg>
+        </a>
+        </div>
+    </header>
+
+    <!-- ================================================================
+        SECTION: KEBUN RAYA BOGOR
+    ================================================================ -->
+    <section class="section" id="kebun-raya">
+        <div class="container">
+
+        <!-- Kepala section dengan ornamen -->
+        <div class="section-head reveal">
+            <p class="section-label">— Sejak 1817 —</p>
+            <h2 class="section-title">Kebun Raya Bogor</h2>
+            <div class="divider-ornament">
+            <span class="line"></span>
+            <span class="diamond">◆</span>
+            <span class="line"></span>
+            </div>
+        </div>
+
+        <!-- Layout: gambar + teks -->
+        <div class="two-col reveal">
+            <div class="col-image">
+            <div class="img-frame">
+                <img
+                src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c8/Kebun_Raya_Bogor_1.jpg/800px-Kebun_Raya_Bogor_1.jpg"
+                alt="Jalan setapak Kebun Raya Bogor"
+                />
+                <!-- Label foto bergaya vintage -->
+                <div class="img-caption">
+                <span>Kebun Raya Bogor, Jawa Barat</span>
+                </div>
+            </div>
+            </div>
+
+            <div class="col-text">
+            <p>
+                Kebun Raya Bogor resmi berdiri pada <strong>18 Mei 1817</strong>,
+                diprakarsai oleh Gubernur Jenderal G.A.G.P. van der Capellen dan
+                dirancang langsung oleh ahli botani Jerman, Caspar Georg Carl
+                Reinwardt. Awalnya dikenal dengan nama <em>'s Lands Plantentuin
+                te Buitenzorg</em>, kebun ini menempati lahan seluas ±87 hektare
+                di jantung kota yang kini dikenal sebagai Kota Bogor.
+            </p>
+            <p>
+                Selama lebih dari dua abad, Kebun Raya Bogor berkembang menjadi
+                pusat penelitian botani terkemuka di Asia Tenggara, menyimpan
+                koleksi lebih dari <strong>15.000 spesies tanaman</strong> dari
+                berbagai penjuru dunia. Di sini pula hidup bunga teratai raksasa
+                <em>Victoria amazonica</em>, jenis tanaman yang memikat perhatian
+                ilmuwan Eropa sejak abad ke-19.
+            </p>
+            <p>
+                Pasca kemerdekaan Indonesia, pengelolaan kebun dialihkan kepada
+                pemerintah Republik Indonesia di bawah Lembaga Ilmu Pengetahuan
+                Indonesia (LIPI). Hingga kini, Kebun Raya Bogor tetap berdiri
+                teguh sebagai simbol harmoni antara ilmu pengetahuan, konservasi
+                alam, dan warisan sejarah bangsa.
+            </p>
+
+            <!-- Fakta cepat bergaya kliping koran lama -->
+            <div class="fact-strip">
+                <div class="fact">
+                <span class="fact-num">1817</span>
+                <span class="fact-lbl">Tahun Berdiri</span>
+                </div>
+                <div class="fact-sep">|</div>
+                <div class="fact">
+                <span class="fact-num">87 Ha</span>
+                <span class="fact-lbl">Luas Area</span>
+                </div>
+                <div class="fact-sep">|</div>
+                <div class="fact">
+                <span class="fact-num">15.000+</span>
+                <span class="fact-lbl">Spesies Tanaman</span>
+                </div>
+            </div>
+            </div>
+        </div>
+        </div>
+    </section>
+
+    <!-- Pemisah antar-section bergaya ornamental -->
+    <div class="section-divider" aria-hidden="true">
+        <span class="div-line"></span>
+        <span class="div-motif">✦ ✦ ✦</span>
+        <span class="div-line"></span>
+    </div>
+
+    <!-- ================================================================
+        SECTION: ISTANA BOGOR
+    ================================================================ -->
+    <section class="section section-alt" id="istana">
+        <div class="container">
+
+        <div class="section-head reveal">
+            <p class="section-label">— Sejak 1745 —</p>
+            <h2 class="section-title">Istana Bogor</h2>
+            <div class="divider-ornament">
+            <span class="line"></span>
+            <span class="diamond">◆</span>
+            <span class="line"></span>
+            </div>
+        </div>
+
+        <!-- Layout terbalik: teks di kiri, gambar di kanan -->
+        <div class="two-col two-col--reverse reveal">
+            <div class="col-text">
+            <p>
+                Dibangun pada tahun <strong>1745</strong> sebagai kediaman
+                peristirahatan Gubernur Jenderal Gustaaf Willem van Imhoff,
+                Istana Bogor mulanya bernama <em>Buitenzorg</em> — frasa Belanda
+                yang bermakna "bebas dari kekhawatiran." Letaknya yang jauh dari
+                kebisingan Batavia menjadikan kompleks ini surga tersendiri bagi
+                para penguasa kolonial.
+            </p>
+            <p>
+                Bangunan asli mengalami kerusakan parah akibat gempa bumi pada
+                1834, sebelum akhirnya dibangun kembali dengan gaya
+                <strong>neo-klasik Eropa</strong> yang lebih megah dan kokoh.
+                Di era berikutnya, kawasan istana diperluas hingga menyatu dengan
+                Kebun Raya di sekelilingnya, menciptakan lanskap bersejarah yang
+                tak tertandingi.
+            </p>
+            <p>
+                Setelah proklamasi kemerdekaan, Istana Bogor resmi menjadi salah
+                satu dari enam istana kepresidenan Republik Indonesia. Kawasan ini
+                terkenal dengan ratusan <strong>rusa totol (Axis axis)</strong>
+                yang bebas berkeliaran di hamparan rumput hijau halaman istana —
+                pemandangan langka yang tetap memukau hingga hari ini.
+            </p>
+
+            <div class="fact-strip">
+                <div class="fact">
+                <span class="fact-num">1745</span>
+                <span class="fact-lbl">Tahun Dibangun</span>
+                </div>
+                <div class="fact-sep">|</div>
+                <div class="fact">
+                <span class="fact-num">±800</span>
+                <span class="fact-lbl">Ekor Rusa Totol</span>
+                </div>
+                <div class="fact-sep">|</div>
+                <div class="fact">
+                <span class="fact-num">6</span>
+                <span class="fact-lbl">Istana Presiden RI</span>
+                </div>
+            </div>
+            </div>
+
+            <div class="col-image">
+            <div class="img-frame">
+                <img
+                src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/26/Bogor_Palace.jpg/800px-Bogor_Palace.jpg"
+                alt="Istana Bogor tampak depan"
+                />
+                <div class="img-caption">
+                <span>Istana Bogor, Jawa Barat</span>
+                </div>
+            </div>
+            </div>
+        </div>
+        </div>
+    </section>
+
+    <div class="section-divider" aria-hidden="true">
+        <span class="div-line"></span>
+        <span class="div-motif">✦ ✦ ✦</span>
+        <span class="div-line"></span>
+    </div>
+
+    <!-- ================================================================
+        SECTION: GALERI
+    ================================================================ -->
+    <section class="section" id="galeri">
+        <div class="container">
+
+        <div class="section-head reveal">
+            <p class="section-label">— Dokumentasi Visual —</p>
+            <h2 class="section-title">Galeri Foto</h2>
+            <div class="divider-ornament">
+            <span class="line"></span>
+            <span class="diamond">◆</span>
+            <span class="line"></span>
+            </div>
+        </div>
+
+        <!-- Grid galeri 3 kolom -->
+        <div class="gallery-grid reveal">
+
+            <div class="gallery-card">
+            <div class="gallery-img-wrap">
+                <img
+                src="img,vidio/kebun raya.jpeg"
+                alt="Panorama Kebun Raya Bogor"
+                />
+            </div>
+            <p class="gallery-label">Panorama Kebun Raya</p>
+            </div>
+
+            <div class="gallery-card">
+            <div class="gallery-img-wrap">
+                <img
+                src="img,vidio/rusa.jpeg"
+                alt="Rusa Totol Istana Bogor"
+                />
+            </div>
+            <p class="gallery-label">Rusa Totol di Halaman Istana</p>
+            </div>
+
+            <div class="gallery-card">
+            <div class="gallery-img-wrap">
+                <img
+                src="img,vidio/teratai.jpeg"
+                alt="Teratai Raksasa Victoria"
+                />
+            </div>
+            <p class="gallery-label">Teratai Raksasa Victoria</p>
+            </div>
+
+            <div class="gallery-card">
+            <div class="gallery-img-wrap">
+                <img
+                src="img,vidio/jalan setapak.jpeg"
+                alt="Jalan Setapak Kebun Raya"
+                />
+            </div>
+            <p class="gallery-label">Jalan Setapak Bersejarah</p>
+            </div>
+
+            <div class="gallery-card">
+            <div class="gallery-img-wrap">
+                <img
+                src="img,vidio/istana bogor.jpeg"
+                alt="Istana Bogor"
+                />
+            </div>
+            <p class="gallery-label">Istana Kepresidenan Bogor</p>
+            </div>
+
+            <div class="gallery-card">
+            <div class="gallery-img-wrap">
+                <img
+                src="img,vidio/kolam.jpeg"
+                alt="Kolam Kebun Raya"
+                />
+            </div>
+            <p class="gallery-label">Kolam Indah Kebun Raya</p>
+            </div>
+
+        </div>
+        </div>
+    </section>
+
+    <div class="section-divider" aria-hidden="true">
+        <span class="div-line"></span>
+        <span class="div-motif">✦ ✦ ✦</span>
+        <span class="div-line"></span>
+    </div>
+
+    <!-- ================================================================
+        SECTION: VIDEO
+    ================================================================ -->
+    <section class="section section-alt" id="video">
+        <div class="container">
+
+        <div class="section-head reveal">
+            <p class="section-label">— Dokumenter —</p>
+            <h2 class="section-title">Saksikan Keindahannya</h2>
+            <div class="divider-ornament">
+            <span class="line"></span>
+            <span class="diamond">◆</span>
+            <span class="line"></span>
+            </div>
+            <p class="section-desc reveal">
+            Simak dokumenter berikut untuk mengenal lebih dekat keindahan
+            dan nilai sejarah Kebun Raya Bogor yang tak lekang oleh waktu.
+            </p>
+        </div>
+
+        <!-- Embed YouTube responsif -->
+        <div class="video-wrapper reveal">
+            <iframe
+            src="https://www.youtube.com/embed/3cE2TDmVuTU"
+            title="Kebun Raya Bogor — Dokumenter"
+            frameborder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowfullscreen
+            ></iframe>
+        </div>
+
+        </div>
+    </section>
+
+    <!-- ================================================================
+        FOOTER
+    ================================================================ -->
+    <footer class="footer">
+        <div class="container">
+        <div class="footer-ornament">✦</div>
+        <p class="footer-logo">Bogor Heritage</p>
+        <p class="footer-tagline">
+            Mengabadikan sejarah alam &amp; budaya Kota Bogor
+        </p>
+        <div class="footer-divider"></div>
+        <p class="footer-copy">
+            &copy; 2025 · Dibuat sebagai project portfolio pemula ·
+            Sumber: Wikipedia &amp; Arsip Sejarah
+        </p>
+        </div>
+    </footer>
+
+    <!-- ================================================================
+        JAVASCRIPT
+    ================================================================ -->
+    <script>
+        /* ---- Navbar: berubah warna saat scroll ---- */
+        const navbar = document.getElementById('navbar');
+        window.addEventListener('scroll', () => {
+        navbar.classList.toggle('scrolled', window.scrollY > 80);
+        });
+
+        /* ---- Hamburger menu (mobile) ---- */
+        const hamburger = document.getElementById('hamburger');
+        const navLinks  = document.getElementById('navLinks');
+        hamburger.addEventListener('click', () => {
+        navLinks.classList.toggle('open');
+        hamburger.classList.toggle('active');
+        });
+
+        /* ---- Tutup menu saat link diklik ---- */
+        navLinks.querySelectorAll('a').forEach(link => {
+        link.addEventListener('click', () => {
+            navLinks.classList.remove('open');
+            hamburger.classList.remove('active');
+        });
+        });
+
+        /* ---- Smooth scroll untuk semua anchor ---- */
+        document.querySelectorAll('a[href^="#"]').forEach(a => {
+        a.addEventListener('click', e => {
+            const target = document.querySelector(a.getAttribute('href'));
+            if (target) {
+            e.preventDefault();
+            target.scrollIntoView({ behavior: 'smooth' });
+            }
+        });
+        });
+
+        /* ---- Parallax ringan pada hero background ---- */
+        const heroBg = document.getElementById('heroBg');
+        window.addEventListener('scroll', () => {
+        const scrollY = window.scrollY;
+        /* Geser gambar sepertiga kecepatan scroll agar terasa kedalaman */
+        heroBg.style.transform = `translateY(${scrollY * 0.35}px) scale(1.08)`;
+        });
+
+        /* ---- Reveal animasi saat scroll (Intersection Observer) ---- */
+        const observer = new IntersectionObserver(
+        entries => {
+            entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('visible');
+                observer.unobserve(entry.target); /* Hanya sekali */
+            }
+            });
+        },
+        { threshold: 0.12 }
+        );
+
+        /* Amati semua elemen dengan class .reveal */
+        document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+    </script>
+
 </body>
 </html>
