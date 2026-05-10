@@ -80,13 +80,9 @@
         </div>
     </header>
 
-    <!-- ================================================================
-        SECTION: KEBUN RAYA BOGOR
-    ================================================================ -->
     <section class="section" id="kebun-raya">
         <div class="container">
 
-        <!-- Kepala section dengan ornamen -->
         <div class="section-head reveal">
             <p class="section-label">— Sejak 1817 —</p>
             <h2 class="section-title">Kebun Raya Bogor</h2>
@@ -97,7 +93,6 @@
             </div>
         </div>
 
-        <!-- Layout: gambar + teks -->
         <div class="two-col reveal">
             <div class="col-image">
             <div class="img-frame">
@@ -105,7 +100,6 @@
                 src="img,vidio/kebun-raya-bogor.jpeg"
                 alt="Jalan setapak Kebun Raya Bogor"
                 />
-                <!-- Label foto bergaya vintage -->
                 <div class="img-caption">
                 <span>Kebun Raya Bogor, Jawa Barat</span>
                 </div>
@@ -137,7 +131,6 @@
                 alam, dan warisan sejarah bangsa.
             </p>
 
-            <!-- Fakta cepat bergaya kliping koran lama -->
             <div class="fact-strip">
                 <div class="fact">
                 <span class="fact-num">1817</span>
@@ -159,16 +152,12 @@
         </div>
     </section>
 
-    <!-- Pemisah antar-section bergaya ornamental -->
     <div class="section-divider" aria-hidden="true">
         <span class="div-line"></span>
         <span class="div-motif">✦ ✦ ✦</span>
         <span class="div-line"></span>
     </div>
 
-    <!-- ================================================================
-        SECTION: ISTANA BOGOR
-    ================================================================ -->
     <section class="section section-alt" id="istana">
         <div class="container">
 
@@ -182,7 +171,6 @@
             </div>
         </div>
 
-        <!-- Layout terbalik: teks di kiri, gambar di kanan -->
         <div class="two-col two-col--reverse reveal">
             <div class="col-text">
             <p>
@@ -248,9 +236,6 @@
         <span class="div-line"></span>
     </div>
 
-    <!-- ================================================================
-        SECTION: GALERI
-    ================================================================ -->
     <section class="section" id="galeri">
         <div class="container">
 
@@ -264,7 +249,6 @@
             </div>
         </div>
 
-        <!-- Grid galeri 3 kolom -->
         <div class="gallery-grid reveal">
 
             <div class="gallery-card">
@@ -337,9 +321,6 @@
         <span class="div-line"></span>
     </div>
 
-    <!-- ================================================================
-        SECTION: VIDEO
-    ================================================================ -->
     <section class="section section-alt" id="video">
         <div class="container">
 
@@ -357,7 +338,6 @@
             </p>
         </div>
 
-        <!-- Embed YouTube responsif -->
         <div class="video-wrapper reveal">
             <iframe
             src="img,vidio/vidio kebun raya.mp4"
@@ -371,9 +351,6 @@
         </div>
     </section>
 
-    <!-- ================================================================
-        FOOTER
-    ================================================================ -->
     <footer class="footer">
         <div class="container">
         <div class="footer-ornament">✦</div>
@@ -387,26 +364,17 @@
         </p>
         </div>
     </footer>
-
-    <!-- ================================================================
-        JAVASCRIPT
-    ================================================================ -->
     <script>
-        /* ---- Navbar: berubah warna saat scroll ---- */
         const navbar = document.getElementById('navbar');
         window.addEventListener('scroll', () => {
         navbar.classList.toggle('scrolled', window.scrollY > 80);
         });
-
-        /* ---- Hamburger menu (mobile) ---- */
         const hamburger = document.getElementById('hamburger');
         const navLinks  = document.getElementById('navLinks');
         hamburger.addEventListener('click', () => {
         navLinks.classList.toggle('open');
         hamburger.classList.toggle('active');
         });
-
-        /* ---- Tutup menu saat link diklik ---- */
         navLinks.querySelectorAll('a').forEach(link => {
         link.addEventListener('click', () => {
             navLinks.classList.remove('open');
@@ -414,7 +382,6 @@
         });
         });
 
-        /* ---- Smooth scroll untuk semua anchor ---- */
         document.querySelectorAll('a[href^="#"]').forEach(a => {
         a.addEventListener('click', e => {
             const target = document.querySelector(a.getAttribute('href'));
@@ -425,28 +392,24 @@
         });
         });
 
-        /* ---- Parallax ringan pada hero background ---- */
         const heroBg = document.getElementById('heroBg');
         window.addEventListener('scroll', () => {
         const scrollY = window.scrollY;
-        /* Geser gambar sepertiga kecepatan scroll agar terasa kedalaman */
         heroBg.style.transform = `translateY(${scrollY * 0.35}px) scale(1.08)`;
         });
 
-        /* ---- Reveal animasi saat scroll (Intersection Observer) ---- */
         const observer = new IntersectionObserver(
         entries => {
             entries.forEach(entry => {
             if (entry.isIntersecting) {
                 entry.target.classList.add('visible');
-                observer.unobserve(entry.target); /* Hanya sekali */
+                observer.unobserve(entry.target); 
             }
             });
         },
         { threshold: 0.12 }
         );
 
-        /* Amati semua elemen dengan class .reveal */
         document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
     </script>
 

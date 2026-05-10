@@ -1,24 +1,24 @@
 :root {
-  /* Warna utama */
-  --cream:        #f2ead8;      /* kertas tua */
-  --cream-dark:   #e8ddc8;      /* sedikit lebih gelap */
-  --beige:        #d6c9a8;      /* beige hangat */
-  --brown:        #5c3d1e;      /* coklat tua pekat */
-  --brown-mid:    #8b5e3c;      /* coklat menengah */
-  --brown-light:  #c8956c;      /* coklat muda / aksen */
-  --green-dark:   #2a3d1f;      /* hijau tua pekat */
-  --green-mid:    #3e5c2b;      /* hijau tengah */
-  --ink:          #1a1208;      /* warna tinta / teks gelap */
-  --ink-mid:      #4a3728;      /* teks paragraf */
-  --gold:         #b8912a;      /* aksen emas */
+  
+  --cream:        #f2ead8;      
+  --cream-dark:   #e8ddc8;      
+  --beige:        #d6c9a8;      
+  --brown:        #5c3d1e;      
+  --brown-mid:    #8b5e3c;      
+  --brown-light:  #c8956c;      
+  --green-dark:   #2a3d1f;      
+  --green-mid:    #3e5c2b;      
+  --ink:          #1a1208;      
+  --ink-mid:      #4a3728;      
+  --gold:         #b8912a;      
   --gold-light:   #d4ab4a;
 
-  /* Tipografi */
+  
   --font-display: 'Playfair Display SC', Georgia, serif;
   --font-body:    'EB Garamond', 'Times New Roman', serif;
   --font-label:   'Cinzel', Georgia, serif;
 
-  /* Lainnya */
+  
   --shadow-sm:  0 2px 12px rgba(44, 24, 8, 0.10);
   --shadow-md:  0 6px 28px rgba(44, 24, 8, 0.16);
   --shadow-lg:  0 16px 56px rgba(44, 24, 8, 0.22);
@@ -27,9 +27,6 @@
   --transition: 0.38s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-/* ──────────────────────────────────────────────────────────
-   RESET & BASE
-────────────────────────────────────────────────────────── */
 *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 
 html { scroll-behavior: smooth; font-size: 16px; }
@@ -40,7 +37,7 @@ body {
   color: var(--ink-mid);
   line-height: 1.8;
   overflow-x: hidden;
-  /* Tekstur background: repeating noise halus via SVG inline */
+  
   background-image:
     url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='0.045'/%3E%3C/svg%3E");
   background-repeat: repeat;
@@ -51,9 +48,6 @@ a { text-decoration: none; color: inherit; }
 ul { list-style: none; }
 img { display: block; max-width: 100%; height: auto; }
 
-/* ──────────────────────────────────────────────────────────
-   GRAIN OVERLAY — lapisan noise di atas seluruh halaman
-────────────────────────────────────────────────────────── */
 .grain-overlay {
   position: fixed;
   inset: 0;
@@ -66,18 +60,12 @@ img { display: block; max-width: 100%; height: auto; }
   mix-blend-mode: multiply;
 }
 
-/* ──────────────────────────────────────────────────────────
-   CONTAINER
-────────────────────────────────────────────────────────── */
 .container {
   max-width: 1080px;
   margin: 0 auto;
   padding: 0 28px;
 }
 
-/* ──────────────────────────────────────────────────────────
-   NAVBAR
-────────────────────────────────────────────────────────── */
 .navbar {
   position: fixed;
   top: 0; left: 0;
@@ -96,7 +84,7 @@ img { display: block; max-width: 100%; height: auto; }
   justify-content: space-between;
 }
 
-/* Logo */
+
 .nav-logo {
   font-family: var(--font-label);
   font-size: 1.05rem;
@@ -109,7 +97,7 @@ img { display: block; max-width: 100%; height: auto; }
 }
 .logo-icon { color: var(--gold-light); font-size: 0.8rem; }
 
-/* Links */
+
 .nav-links {
   display: flex;
   gap: 36px;
@@ -135,7 +123,7 @@ img { display: block; max-width: 100%; height: auto; }
 .nav-links a:hover { color: var(--gold-light); }
 .nav-links a:hover::after { width: 100%; }
 
-/* Navbar scrolled */
+
 .navbar.scrolled {
   background: var(--brown);
   box-shadow: var(--shadow-md);
@@ -143,7 +131,7 @@ img { display: block; max-width: 100%; height: auto; }
 }
 .navbar.scrolled .nav-logo { color: var(--cream); }
 
-/* Hamburger */
+
 .hamburger {
   display: none;
   flex-direction: column;
@@ -163,9 +151,6 @@ img { display: block; max-width: 100%; height: auto; }
 .hamburger.active span:nth-child(2) { opacity: 0; }
 .hamburger.active span:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
 
-/* ──────────────────────────────────────────────────────────
-   HERO SECTION
-────────────────────────────────────────────────────────── */
 .hero {
   position: relative;
   height: 100vh;
@@ -177,18 +162,18 @@ img { display: block; max-width: 100%; height: auto; }
   text-align: center;
 }
 
-/* Gambar background */
+
 .hero-bg {
   position: absolute;
   inset: 0;
   width: 100%; height: 100%;
   object-fit: cover;
   object-position: center 40%;
-  transform: scale(1.08); /* diperbesar agar ada ruang parallax */
+  transform: scale(1.08); 
   will-change: transform;
 }
 
-/* Overlay berlapis: gradient coklat + hijau gelap */
+
 .hero-overlay {
   position: absolute;
   inset: 0;
@@ -201,7 +186,7 @@ img { display: block; max-width: 100%; height: auto; }
     );
 }
 
-/* Bingkai dekoratif pojok */
+
 .hero-frame { position: absolute; inset: 28px; pointer-events: none; }
 .corner {
   position: absolute;
@@ -214,7 +199,7 @@ img { display: block; max-width: 100%; height: auto; }
 .corner.bl { bottom: 0; left: 0;  border-width: 0 0 1.5px 1.5px; }
 .corner.br { bottom: 0; right: 0; border-width: 0 1.5px 1.5px 0; }
 
-/* Konten hero */
+
 .hero-content {
   position: relative;
   z-index: 2;
@@ -232,7 +217,7 @@ img { display: block; max-width: 100%; height: auto; }
   margin-bottom: 18px;
 }
 
-/* Ornamen garis dengan simbol */
+
 .ornament-line {
   display: flex;
   align-items: center;
@@ -278,7 +263,7 @@ img { display: block; max-width: 100%; height: auto; }
   line-height: 1.7;
 }
 
-/* Tombol Jelajahi */
+
 .btn-explore {
   display: inline-flex;
   align-items: center;
@@ -308,9 +293,6 @@ img { display: block; max-width: 100%; height: auto; }
   animation: bounce 1.8s ease-in-out infinite;
 }
 
-/* ──────────────────────────────────────────────────────────
-   SECTION UMUM
-────────────────────────────────────────────────────────── */
 .section {
   padding: 96px 0;
   background: var(--cream);
@@ -319,7 +301,7 @@ img { display: block; max-width: 100%; height: auto; }
   background: var(--cream-dark);
 }
 
-/* Kepala section */
+
 .section-head {
   text-align: center;
   margin-bottom: 56px;
@@ -349,7 +331,7 @@ img { display: block; max-width: 100%; height: auto; }
   margin-bottom: 40px;
 }
 
-/* Garis ornamen di bawah judul section */
+
 .divider-ornament {
   display: flex;
   align-items: center;
@@ -366,9 +348,6 @@ img { display: block; max-width: 100%; height: auto; }
   letter-spacing: 2px;
 }
 
-/* ──────────────────────────────────────────────────────────
-   PEMISAH ANTAR SECTION
-────────────────────────────────────────────────────────── */
 .section-divider {
   display: flex;
   align-items: center;
@@ -389,20 +368,17 @@ img { display: block; max-width: 100%; height: auto; }
   color: var(--gold);
 }
 
-/* ──────────────────────────────────────────────────────────
-   TWO-COLUMN LAYOUT (teks + gambar)
-────────────────────────────────────────────────────────── */
 .two-col {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 56px;
   align-items: start;
 }
-/* Versi terbalik untuk Istana */
+
 .two-col--reverse { direction: rtl; }
 .two-col--reverse > * { direction: ltr; }
 
-/* Teks paragraf */
+
 .col-text p {
   font-size: 1.08rem;
   color: var(--ink-mid);
@@ -411,7 +387,7 @@ img { display: block; max-width: 100%; height: auto; }
   hyphens: auto;
 }
 .col-text p:first-child::first-letter {
-  /* Drop cap pada paragraf pertama */
+  
   float: left;
   font-family: var(--font-display);
   font-size: 3.8rem;
@@ -421,7 +397,7 @@ img { display: block; max-width: 100%; height: auto; }
 }
 .col-text strong { color: var(--brown); font-weight: 600; }
 
-/* Kotak fakta bergaya koran lama */
+
 .fact-strip {
   display: flex;
   align-items: stretch;
@@ -466,13 +442,13 @@ img { display: block; max-width: 100%; height: auto; }
   font-size: 0.7rem;
 }
 
-/* Bingkai gambar bergaya vintage */
+
 .img-frame {
   position: relative;
   box-shadow: var(--shadow-lg);
   border-radius: var(--radius);
   overflow: hidden;
-  /* Bingkai dalam dengan border */
+  
   outline: 1px solid var(--beige);
   outline-offset: -8px;
 }
@@ -488,7 +464,7 @@ img { display: block; max-width: 100%; height: auto; }
   filter: sepia(0%) contrast(1.05) brightness(1);
 }
 
-/* Caption foto bergaya label vintage */
+
 .img-caption {
   position: absolute;
   bottom: 0; left: 0; right: 0;
@@ -503,9 +479,6 @@ img { display: block; max-width: 100%; height: auto; }
   color: rgba(242, 234, 216, 0.9);
 }
 
-/* ──────────────────────────────────────────────────────────
-   GALERI
-────────────────────────────────────────────────────────── */
 .gallery-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -553,19 +526,16 @@ img { display: block; max-width: 100%; height: auto; }
   background: rgba(255,255,255,0.6);
 }
 
-/* ──────────────────────────────────────────────────────────
-   VIDEO
-────────────────────────────────────────────────────────── */
 .video-wrapper {
   position: relative;
-  padding-bottom: 56.25%; /* 16:9 */
+  padding-bottom: 56.25%; 
   height: 0;
   overflow: hidden;
   border-radius: var(--radius-lg);
   box-shadow: var(--shadow-lg);
   max-width: 860px;
   margin: 0 auto;
-  /* Bingkai dalam */
+  
   outline: 1px solid var(--beige);
   outline-offset: -6px;
 }
@@ -575,9 +545,6 @@ img { display: block; max-width: 100%; height: auto; }
   width: 100%; height: 100%;
 }
 
-/* ──────────────────────────────────────────────────────────
-   FOOTER
-────────────────────────────────────────────────────────── */
 .footer {
   background: var(--ink);
   padding: 60px 0 32px;
@@ -615,9 +582,6 @@ img { display: block; max-width: 100%; height: auto; }
   color: rgba(242, 234, 216, 0.35);
 }
 
-/* ──────────────────────────────────────────────────────────
-   ANIMASI REVEAL (dikontrol via JS IntersectionObserver)
-────────────────────────────────────────────────────────── */
 .reveal {
   opacity: 0;
   transform: translateY(32px);
@@ -628,9 +592,6 @@ img { display: block; max-width: 100%; height: auto; }
   transform: translateY(0);
 }
 
-/* ──────────────────────────────────────────────────────────
-   KEYFRAMES
-────────────────────────────────────────────────────────── */
 @keyframes heroFadeUp {
   from { opacity: 0; transform: translateY(40px); }
   to   { opacity: 1; transform: translateY(0); }
@@ -641,9 +602,6 @@ img { display: block; max-width: 100%; height: auto; }
   50%       { transform: translateY(4px); }
 }
 
-/* ──────────────────────────────────────────────────────────
-   RESPONSIVE — TABLET (≤ 900px)
-────────────────────────────────────────────────────────── */
 @media (max-width: 900px) {
   .two-col,
   .two-col--reverse {
@@ -659,12 +617,9 @@ img { display: block; max-width: 100%; height: auto; }
   .hero-title { font-size: 2.2rem; }
 }
 
-/* ──────────────────────────────────────────────────────────
-   RESPONSIVE — MOBILE (≤ 600px)
-────────────────────────────────────────────────────────── */
 @media (max-width: 600px) {
 
-  /* Navbar mobile */
+  
   .nav-inner { padding: 18px 20px; }
 
   .nav-links {
@@ -681,14 +636,14 @@ img { display: block; max-width: 100%; height: auto; }
 
   .hamburger { display: flex; }
 
-  /* Hero */
+  
   .hero-frame { inset: 14px; }
   .hide-mobile { display: none; }
 
-  /* Sections */
+  
   .section { padding: 64px 0; }
 
-  /* Drop cap dimatikan di mobile agar tidak aneh */
+  
   .col-text p:first-child::first-letter {
     float: none;
     font-size: inherit;
@@ -696,11 +651,11 @@ img { display: block; max-width: 100%; height: auto; }
     color: inherit;
   }
 
-  /* Fakta strip vertikal */
+  
   .fact-strip { flex-direction: column; }
   .fact-sep { display: none; }
 
-  /* Galeri 1 kolom */
+  
   .gallery-grid { grid-template-columns: 1fr; }
 
   .img-frame img { height: 240px; }
